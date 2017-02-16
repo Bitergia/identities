@@ -9,9 +9,16 @@ The *profile* section is the fist one for each contributor. It contains:
 - profile:
     name: Leonard Hofstadter
     is_bot: false
+    avatar: http://gravatar.com/avatar/b7081d0131ad47821467b8e81434cf7a
+    gender: male
+    country: Spàin
+    city: Madrid
+    lat/long: 40.4168N, 3.7038W
 ```
 
-*enrollments* section includes the different companies the contributor has worked with. If you are not sure about the dates don't include them. In the example below Leonard contributions will be included in the buckets of two companies (depending on the date) and his contributions before 2013 will be assigned to the "Unknown" organization.
+Some of the former fields could not be supported still by SortingHat, and will be ignored, but still they can be present in the profile information.
+
+*enrollments* section includes the different companies the contributor has worked with. If you are not sure about the dates don't include them. In the example below Leonard contributions will be included in the buckets of two companies (depending on the date) and his contributions before 2013 will be assigned to the "Unknown" organization. Periods for companies should not overlap. Periods will be be always start <= period, end > period or stated as limits [start, end). Therefore, if the period is the whole year 2016, start could be 2016-01-01T00:00:00 and end could be 2017-01-01T00:00:00. To make it more simple, the part after "T" (including it) could be avoided.
 
 ```
   enrollments:
