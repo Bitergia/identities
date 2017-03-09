@@ -87,6 +87,16 @@ Due to the dashboard groups data from different data sources (github, stackoverf
     - sanacl
   email:
     - lcanas@bitergia.com
+    
+# even simpler entry
+- profile:
+    name: Alvaro del Castillo
+  email:
+    - acs@bitergia.com
+  enrollments:
+    - organization: Bitergia
+      start: 2012-01-01
+
 ```
 
 * this is how the information was stored in our database before loading the information from the identities file. We had two different unique identities for the same person
