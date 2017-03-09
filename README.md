@@ -1,6 +1,6 @@
 # Format specification
 
-This document is a work in progress. Our aim is to define a format to allow users to edit the data about contributors in an easy way. The use case below contains an example of the file that will be used to feed the dashboards.
+This document is a work in progress. Its aim is to define a format to allow users to edit the data about contributors in an easy way. The use case below contains an example of the file that will be used to feed the dashboards.
 
 The *profile* section is the fist one for each contributor. It contains:
 * "name": this will be the named displayed on the dashboard
@@ -18,37 +18,36 @@ The *profile* section is the fist one for each contributor. It contains:
 
 Some of the former fields could not be supported still by SortingHat, and will be ignored, but still they can be present in the profile information.
 
-*enrollments* section includes the different companies the contributor has worked with. If you are not sure about the dates don't include them. In the example below Leonard contributions will be included in the buckets of two companies (depending on the date) and his contributions before 2013 will be assigned to the "Unknown" organization. Periods for companies should not overlap. Periods will be be always start <= period, end > period or stated as limits [start, end). Therefore, if the period is the whole year 2016, start could be 2016-01-01T00:00:00 and end could be 2017-01-01T00:00:00. To make it more simple, the part after "T" (including it) could be avoided.
+*enrollments* section includes the different companies the contributor has worked with. If you are not sure about the dates don't include them. In the example below Leonard contributions will be included in the buckets of two companies (depending on the date) and his contributions before 2013 will be assigned to the "Unknown" organization. Periods for companies should not overlap. Periods will always follow the rule:
+ - start <= period, end > period 
+ - or stated as limits [start, end). 
+
+Therefore if the period is the whole year 2016, start could be 2016-01-01 and end could be 2017-01-01. 
 
 ```
   enrollments:
     - organization: Example Company A
-      start: 2013-01-01T00:00:00
-      end: 2013-12-31T00:00:00
+      start: 2013-01-01
+      end: 2013-12-31
     - organization: Example Company B
-      start: 2014-01-01T00:00:00
+      start: 2014-01-01
 ```
 
-When you want to group accounts by its name use the *name* section. In our example the contributor uses these two different names in the different data sources.
-```
-  name:
-    - Leonard Hofstadter
-    - Leonard H.
-```
-
-Again, in order to group the different accounts in a single (and unified and shiny) identity if you include the different emails used by a contributor, the task will be simpler. Use *email* for that.
+In order to group the different accounts in a single (and unified and shiny) identity include the different emails used by a contributor. Use *email* for that.
 ```
   email:
     - leoh@example.companyb.xyz
     - leoh@gmail.xyz
 ```
 
-Due to the dashboard groups data from different data sources (github, stackoverflow, jira, git, gerrit ..) including the name used by the contributor will make the unification easier. In the example below we do it for *github*. These are the data sources supported by the identities platform nowdays: askbot, bugzilla, confluence, discourse, gerrit, git, github, jira, mediawiki, meetup, phabricator, redmine, stackexchange, irc, telegram
+Due to the dashboard groups data from different data sources (github, stackoverflow, jira, git, gerrit ..) including the name used by the contributor will make the unification easier. In the example below we do it for *github*. 
 
 ```
   github:
     - jsmanrique
 ```
+
+You can also add this info for the current data sources: _askbot, bugzilla, confluence, discourse, gerrit, github, jira, mediawiki, meetup, phabricator, redmine, stackexchange, irc, telegram_. So just type the data source name and the account of the contributor.
 
 
 
@@ -65,10 +64,7 @@ Due to the dashboard groups data from different data sources (github, stackoverf
     name: J. Manrique Lopez de la Fuente
   enrollments:
     - organization: Bitergia
-      start: 2013-01-01T00:00:00
-  name:
-    - J. Manrique Lopez de la Fuente
-    - Manrique Lopez
+      start: 2013-01-01
   github:
     - jsmanrique
   email:
@@ -80,15 +76,12 @@ Due to the dashboard groups data from different data sources (github, stackoverf
   enrollments:
     - organization: Bitergia
       start: 2012-01-01T00:00:00
-  name:
-    - Luis Cañas Díaz
-    - Luis Cañas-Díaz
   github:
     - sanacl
   email:
     - lcanas@bitergia.com
-    
-# even simpler entry
+  
+# even simpler entry for the lazy people ;)
 - profile:
     name: Alvaro del Castillo
   email:
@@ -96,6 +89,12 @@ Due to the dashboard groups data from different data sources (github, stackoverf
   enrollments:
     - organization: Bitergia
       start: 2012-01-01
+
+# and another one for bots so we can filter them out with the UI
+- profile:
+    is_bot: true
+  email:
+    - owlbot@bitergia.com
 
 ```
 
