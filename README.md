@@ -5,13 +5,14 @@ This document is a work in progress. Its aim is to define a format to allow user
 The *profile* section is the fist one for each contributor. It contains:
 * "name": this will be the named displayed on the dashboard
 * "is_bot": a boolean flag to distinguish bot from humans. By default bots are filtered out on dashboard panels
+
 ```
 - profile:
     name: Leonard Hofstadter
     is_bot: false
     avatar: http://gravatar.com/avatar/b7081d0131ad47821467b8e81434cf7a
     gender: male
-    country: Spàin
+    country: Spain
     city: Madrid
     lat/long: 40.4168N, 3.7038W
 ```
@@ -19,10 +20,10 @@ The *profile* section is the fist one for each contributor. It contains:
 Some of the former fields could not be supported still by SortingHat, and will be ignored, but still they can be present in the profile information.
 
 *enrollments* section includes the different companies the contributor has worked with. If you are not sure about the dates don't include them. In the example below Leonard contributions will be included in the buckets of two companies (depending on the date) and his contributions before 2013 will be assigned to the "Unknown" organization. Periods for companies should not overlap. Periods will always follow the rule:
- - start <= period, end > period 
- - or stated as limits [start, end). 
+ - start <= period, end > period
+ - or stated as limits [start, end).
 
-Therefore if the period is the whole year 2016, start could be 2016-01-01 and end could be 2017-01-01. 
+Therefore if the period is the whole year 2016, start could be 2016-01-01 and end could be 2017-01-01.
 
 ```
   enrollments:
@@ -40,7 +41,7 @@ In order to group the different accounts in a single (and unified and shiny) ide
     - leoh@gmail.xyz
 ```
 
-Due to the dashboard groups data from different data sources (github, stackoverflow, jira, git, gerrit ..) including the name used by the contributor will make the unification easier. In the example below we do it for *github*. 
+Due to the dashboard groups data from different data sources (github, stackoverflow, jira, git, gerrit ..) including the name used by the contributor will make the unification easier. In the example below we do it for *github*.
 
 ```
   github:
